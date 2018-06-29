@@ -69,6 +69,11 @@ The v4.x series includes [osm2pgsql lua transforms](https://github.com/openstree
 and a hstore column with all other tags, allowing use of more OpenStreetMap data. Users need
 to reload their databases, v3.x compatibility is not maintained.
 
+## Mapnik and CartoCSS update (v5.x)
+
+The v5.x series was triggered by an update to the required Mapnik and CartoCSS
+versions.
+
 There are over [300 open requests][issues], some that have been open for years.
 These need reviewing and dividing into obvious fixes, or additional new features
 that need some cartographic judgement.
