@@ -1132,8 +1132,10 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
 
-  // z_order 10
-  ::construction-fill {
+  // z_order 10, 90, 100, 110
+  ::various-fill {
+
+    // z_order 10
     /*
      * The construction rules for small roads are strange, since if construction is null its assumed that
      * it's a more major road. The line-width = 0 could be removed by playing with the query to set a construction
@@ -1221,10 +1223,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         }
       }
     }
-  }
 
-  // z_order 90 (platform)
-  ::platform-fill {
+    // z_order 90 (platform)
+    // No special unpaved rendering (SQL query for "DISTINCT layer" would need to join highway and railway information)
     [feature = 'highway_platform'] {
       [zoom >= 16] {
         line-join: round;
@@ -1235,9 +1236,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         b/line-color: @platform-fill;
         b/line-cap: round;
         b/line-join: round;
-        #roads-low-zoom, #roads-fill, #bridges {
-          [int_surface = 'unpaved'] { b/line-comp-op: dst-out; }
-        }
       }
     }
     [feature = 'railway_platform'] {
@@ -1250,23 +1248,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         b/line-color: @platform-fill;
         b/line-cap: round;
         b/line-join: round;
-        #roads-low-zoom, #roads-fill, #bridges {
-          [int_surface = 'unpaved'] { b/line-comp-op: dst-out; }
-        }
       }
     }
-  }
-  ::platform-fill-pattern {
-    [feature = 'globalboundingbox'][zoom >= 16] {
-      polygon-pattern-comp-op: dst-over;
-      polygon-pattern-file: url('symbols/unpaved/unpaved_platform-fill.svg');
-      polygon-pattern-alignment: global;
-    }
-  }
-
-  // z_order 90 (steps), 100, 110
-  ::various-fill {
-
+  
     // z_order 90 (steps)
     [feature = 'highway_steps'] {
       [zoom >= 13][access != 'no'],
@@ -2849,10 +2833,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   [feature = 'railway_platform'] {
     [zoom >= 16] {
       polygon-fill: @platform-fill;
-      [int_surface = 'unpaved'] {
-        polygon-pattern-file: url('symbols/unpaved/unpaved_platform-fill.svg');
-        polygon-pattern-alignment: global;
-      }
     }
   }
 

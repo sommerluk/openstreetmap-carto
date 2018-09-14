@@ -2094,6 +2094,7 @@ Layer:
         ) AS roads_text_name
     properties:
       minzoom: 13
+      cache-features: true
   - id: paths-text-name
     geometry: linestring
     <<: *extents
