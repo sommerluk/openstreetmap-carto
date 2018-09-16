@@ -864,10 +864,11 @@ Layer:
             service,
             link,
             layernotnull
-          FROM ( -- begin "features" subselect that contains both roads and rail/aero
-            SELECT
+          FROM ( -- subselect that contains both roads and rail/aero
+            WITH features_real AS ( -- this is the actual data (which is used both as is and to determine the distinct layer values present in it)
+              SELECT
                 way,
-                'highway_' || highway AS feature, -- only motorway to tertiary links are accepted later on
+                'highway_' || highway AS feature, --only motorway to tertiary links are accepted later on
                 horse,
                 foot,
                 bicycle,
@@ -892,12 +893,51 @@ Layer:
                   ELSE 'no'
                 END AS link,
                 COALESCE(layer,0) AS layernotnull,
-                z_order
+                z_order,
+                CASE
+                  WHEN highway IN ('service', 'tertiary_link') THEN 'tertiary_link'
+                  WHEN highway IN ('residential', 'unclassified', 'tertiary') THEN 'white'
+                  ELSE highway
+                END AS int_roadcolor
               FROM planet_osm_line
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
                 AND (covered IS NULL OR NOT covered = 'yes')
                 AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
                 AND highway IS NOT NULL -- end of road select
+                AND way && !bbox!
+            )
+            SELECT
+                way,
+                feature,
+                horse,
+                foot,
+                bicycle,
+                tracktype,
+                int_surface,
+                access,
+                construction,
+                service,
+                link,
+                layernotnull,
+                z_order
+              FROM features_real
+            UNION ALL
+            SELECT
+                ST_MakeEnvelope(-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244, 900913) AS way,
+                'int-' || int_roadcolor || '-globalboundingbox' AS feature,
+                NULL AS horse,
+                NULL AS foot,
+                NULL AS bicycle,
+                NULL AS tracktype,
+                NULL AS surface,
+                NULL AS access,
+                NULL AS construction,
+                NULL AS service,
+                NULL AS link,
+                NULL AS layernotnull,
+                NULL AS z_order
+              FROM
+                (SELECT DISTINCT int_roadcolor FROM features_real WHERE int_surface IN ('unpaved') ) AS globalboundingboxes
             UNION ALL
             SELECT
                 way,
@@ -931,22 +971,7 @@ Layer:
                 AND (covered IS NULL OR NOT covered = 'yes')
                 AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
                 AND railway IS NOT NULL -- end of rail select
-            UNION ALL
-            (SELECT
-                ST_MakeEnvelope(-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244, 900913) AS way,
-                'globalboundingbox' AS feature,
-                NULL AS horse,
-                NULL AS foot,
-                NULL AS bicycle,
-                NULL AS tracktype,
-                NULL AS surface,
-                NULL AS access,
-                NULL AS construction,
-                NULL AS service,
-                NULL AS link,
-                NULL AS layernotnull,
-                NULL AS z_order
-            )
+                AND way && !bbox!
             ) AS features
           ORDER BY
             z_order,
