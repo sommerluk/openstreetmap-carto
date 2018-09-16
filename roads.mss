@@ -1617,7 +1617,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
   ::white_link-fill-pattern {
-    [feature = 'globalboundingbox'][zoom >= 12] {
+    [feature = 'globalboundingbox'][zoom >= 12],
+    [feature = 'int-tertiary_link-globalboundingbox'][zoom >= 12] {
       polygon-pattern-comp-op: dst-over;
       polygon-pattern-file: url('symbols/unpaved/unpaved_residential-fill.svg');
       polygon-pattern-alignment: global;
@@ -1662,7 +1663,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
   ::secondary_link-fill-pattern {
-    [feature = 'globalboundingbox'][zoom >= 12] {
+    [feature = 'globalboundingbox'][zoom >= 12],
+    [feature = 'int-secondary_link-globalboundingbox'][zoom >= 12] {
       polygon-pattern-comp-op: dst-over;
       polygon-pattern-file: url('symbols/unpaved/unpaved_secondary-fill.svg');
       polygon-pattern-alignment: global;
@@ -1705,7 +1707,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
   ::primary_link-fill-pattern {
-    [feature = 'globalboundingbox'][zoom >= 10] {
+    [feature = 'globalboundingbox'][zoom >= 10],
+    [feature = 'int-primary_link-globalboundingbox'][zoom >= 10] {
       polygon-pattern-comp-op: dst-over;
       polygon-pattern-file: url('symbols/unpaved/unpaved_primary-low-zoom.svg');
       polygon-pattern-alignment: global;
@@ -1751,7 +1754,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
   ::trunk_link-fill-pattern {
-    [feature = 'globalboundingbox'][zoom >= 10] {
+    [feature = 'globalboundingbox'][zoom >= 10],
+    [feature = 'int-trunk_link-globalboundingbox'][zoom >= 10] {
       polygon-pattern-comp-op: dst-over;
       polygon-pattern-file: url('symbols/unpaved/unpaved_trunk-low-zoom.svg');
       polygon-pattern-alignment: global;
@@ -1797,7 +1801,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
   ::motorway_link-fill-pattern {
-    [feature = 'globalboundingbox'][zoom >= 10] {
+    [feature = 'globalboundingbox'][zoom >= 10],
+    [feature = 'int-motorway_link-globalboundingbox'][zoom >= 10] {
       polygon-pattern-comp-op: dst-over;
       polygon-pattern-file: url('symbols/unpaved/unpaved_motorway-low-zoom.svg');
       polygon-pattern-alignment: global;
@@ -1828,7 +1833,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
   ::raceway-fill-pattern {
-    [feature = 'globalboundingbox'][zoom >= 12] {
+    [feature = 'globalboundingbox'][zoom >= 12],
+    [feature = 'int-raceway-globalboundingbox'][zoom >= 12] {
       polygon-pattern-comp-op: dst-over;
       polygon-pattern-file: url('symbols/unpaved/unpaved_raceway-fill.svg');
       polygon-pattern-alignment: global;
@@ -1865,7 +1871,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
   ::pedestrian-fill-pattern {
-    [feature = 'globalboundingbox'][zoom >= 13] {
+    [feature = 'globalboundingbox'][zoom >= 13],
+    [feature = 'int-pedestrian-globalboundingbox'][zoom >= 13] {
       polygon-pattern-comp-op: dst-over;
       polygon-pattern-file: url('symbols/unpaved/unpaved_pedestrian-fill.svg');
       polygon-pattern-alignment: global;
@@ -1907,7 +1914,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
   ::living_street-fill-pattern {
-    [feature = 'globalboundingbox'][zoom >= 13] {
+    [feature = 'globalboundingbox'][zoom >= 13],
+    [feature = 'int-living_street-globalboundingbox'][zoom >= 13] {
       polygon-pattern-comp-op: dst-over;
       polygon-pattern-file: url('symbols/unpaved/unpaved_living-street-fill.svg');
       polygon-pattern-alignment: global;
@@ -1950,7 +1958,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
   ::road-fill-pattern {
-    [feature = 'globalboundingbox'][zoom >= 14] {
+    [feature = 'globalboundingbox'][zoom >= 14],
+    [feature = 'int-road-globalboundingbox'][zoom >= 14] {
       polygon-pattern-comp-op: dst-over;
       polygon-pattern-file: url('symbols/unpaved/unpaved_road-fill.svg');
       polygon-pattern-alignment: global;
@@ -2041,7 +2050,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
   }
   ::white-fill-pattern {
-    [feature = 'globalboundingbox'][zoom >= 12] {
+    [feature = 'globalboundingbox'][zoom >= 12],
+    [feature = 'int-white-globalboundingbox'][zoom >= 12] {
       polygon-pattern-comp-op: dst-over;
       polygon-pattern-file: url('symbols/unpaved/unpaved_residential-fill.svg');
       polygon-pattern-alignment: global;
@@ -2091,7 +2101,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
   ::secondary-fill-pattern {
-    [feature = 'globalboundingbox'][zoom >= 12] {
+    [feature = 'globalboundingbox'][zoom >= 12],
+    [feature = 'int-secondary-globalboundingbox'][zoom >= 12] {
       polygon-pattern-comp-op: dst-over;
       polygon-pattern-file: url('symbols/unpaved/unpaved_secondary-fill.svg');
       polygon-pattern-alignment: global;
@@ -2136,7 +2147,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
   ::primary-fill-pattern {
-    [feature = 'globalboundingbox'][zoom >= 8] {
+    [feature = 'globalboundingbox'][zoom >= 8],
+    [feature = 'int-primary-globalboundingbox'][zoom >= 8] {
       polygon-pattern-comp-op: dst-over;
       polygon-pattern-file: url('symbols/unpaved/unpaved_primary-low-zoom.svg');
       polygon-pattern-alignment: global;
@@ -2186,7 +2198,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
   ::trunk-fill-pattern {
-    [feature = 'globalboundingbox'][zoom >= 6] {
+    [feature = 'globalboundingbox'][zoom >= 6],
+    [feature = 'int-trunk-globalboundingbox'][zoom >= 6] {
       polygon-pattern-comp-op: dst-over;
       polygon-pattern-file: url('symbols/unpaved/unpaved_trunk-low-zoom.svg');
       polygon-pattern-alignment: global;
@@ -2236,7 +2249,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
   ::motorway-fill-pattern {
-    [feature = 'globalboundingbox'][zoom >= 6] {
+    [feature = 'globalboundingbox'][zoom >= 6],
+    [feature = 'int-motorway-globalboundingbox'][zoom >= 6] {
       polygon-pattern-comp-op: dst-over;
       polygon-pattern-file: url('symbols/unpaved/unpaved_motorway-low-zoom.svg');
       polygon-pattern-alignment: global;
