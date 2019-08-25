@@ -56,9 +56,14 @@ Layer:
         (SELECT
             way,
             CASE
-              WHEN tags->'ISO3166-1:alpha2' IN ('CI') THEN 1
-              WHEN tags->'ISO3166-1:alpha2' IN ('BJ') THEN 2
-              ELSE 0
+              WHEN tags->'ISO3166-1:alpha2' IN ('CI ', 'KE ', 'CG ', 'MA ', 'ZM ', 'SZ ', 'TD ')               THEN 1 -- pink
+              WHEN tags->'ISO3166-1:alpha2' IN ('BW ', 'GM ', 'GH ', 'CM ', 'LY ', 'MW ', 'SL ', 'UG ')        THEN 2 -- orange
+              WHEN tags->'ISO3166-1:alpha2' IN ('LR ', 'MR ', 'MZ ', 'NA ', 'SC ', 'TG ', 'CF ', 'BI ')        THEN 3 -- purple
+              WHEN tags->'ISO3166-1:alpha2' IN ('DJ ', 'GN ', 'MU ', 'NG ', 'ZA ', 'SS ', 'TN ', 'EH ', 'TZ ') THEN 4 -- green
+              WHEN tags->'ISO3166-1:alpha2' IN ('BJ ', 'GA ', 'CV ', 'ML ', 'ZW ', 'SO ', 'SD ')               THEN 5 -- yellow
+              WHEN tags->'ISO3166-1:alpha2' IN ('DZ ', 'AO ', 'GQ ', 'BF ', 'ER ', 'GW ', 'MG ', 'RW ')        THEN 6 -- brown
+              WHEN tags->'ISO3166-1:alpha2' IN ('EG ', 'ET ', 'CD ', 'LS ', 'NE ', 'ST ', 'SN ', 'KM ')        THEN 7 -- blue
+              ELSE                                                                                                  0 -- missing in query
             END AS int_color
           FROM planet_osm_polygon
           WHERE boundary = 'administrative'
