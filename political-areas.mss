@@ -1,10 +1,11 @@
 #country-areas {
-  ::marker {
-    marker-fill: green;
-    marker-width: 60;
-    marker-height: 60;
+  // for missing color defination
+  polygon-fill: red;
+  // for existing color defination
+  [int_color = 1] {
+    polygon-fill: purple;
   }
-  ::ares {
-    polygon-fill: green;
+  [int_color = 2] {
+    polygon-fill: yellow;
   }
 }

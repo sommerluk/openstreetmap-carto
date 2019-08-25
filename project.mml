@@ -54,7 +54,12 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way
+            way,
+            CASE
+              WHEN tags->'ISO3166-1:alpha2' IN ('CI') THEN 1
+              WHEN tags->'ISO3166-1:alpha2' IN ('BJ') THEN 2
+              ELSE 0
+            END AS int_color
           FROM planet_osm_polygon
           WHERE boundary = 'administrative'
             AND admin_level = '2'
@@ -490,18 +495,19 @@ Layer:
                     WHEN (place = 'town') THEN 1000
                     ELSE 1
                   END)
-                  *
+                ) AS score,
+                (
                   (CASE
                     WHEN (tags @> 'capital=>4') THEN 2
                     ELSE 1
                   END)
-                ) AS score
+                ) AS int_capital
               FROM planet_osm_point
               WHERE place IN ('city', 'town')
                 AND name IS NOT NULL
                 AND NOT (tags @> 'capital=>yes')
             ) as p
-          ORDER BY score DESC, length(name) DESC, name
+          ORDER BY int_capital DESC, score DESC, length(name) DESC, name
         ) AS placenames_medium
     properties:
       minzoom: 4

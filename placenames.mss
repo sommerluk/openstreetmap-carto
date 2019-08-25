@@ -72,7 +72,7 @@
     shield-text-dx: 6;
     shield-text-dy: 6;
     shield-name: '[name]';
-    shield-face-name: @book-fonts;
+    shield-face-name: @bold-fonts;
     shield-fill: @placenames;
     shield-size: 11;
     shield-wrap-width: 30; // 2.7 em
@@ -105,7 +105,7 @@
   }
   [zoom >= 8] {
     text-name: '[name]';
-    text-face-name: @book-fonts;
+    text-face-name: @bold-fonts;
     text-fill: @placenames;
     text-size: 13;
     text-wrap-width: 65; // 5.0 em
