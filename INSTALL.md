@@ -130,8 +130,10 @@ Some colours, SVGs and other files are generated with helper scripts. Not all us
 
 For deployment, CartoCSS and Mapnik are required.
 
-* [CartoCSS](https://github.com/mapbox/carto) >= 1.2.0 (we're using YAML)
-* [Mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 3.0.22. Ubuntu 20.04 LTS (Focal Fossa) ships Mapnik 3.0.22. For the older Ubuntu 18.04 LTS (Bionic Beaver) a backport of Mapnik 3.0.22 is available via PPA: https://launchpad.net/~osmadmins/+archive/ubuntu/ppa
+* [CartoCSS](https://github.com/mapbox/carto) >= 1.2.0 *(we're using YAML)*
+* [Mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 3.0.22
+
+Ubuntu 20.04 LTS Focal Fossa ships yet Mapnik 3.0.23. For the older Ubuntu 18.04 LTS Bionic Beaver, a backport of Mapnik 3.0.22 is available via PPA: https://launchpad.net/~osmadmins/+archive/ubuntu/ppa
 
 With CartoCSS you compile these sources into a Mapnik compatible XML file. When running CartoCSS, specify the Mapnik API version you are using (at least 3.0.22: `carto -a "3.0.22"`).
 
